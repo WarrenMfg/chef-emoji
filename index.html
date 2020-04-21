@@ -9,7 +9,7 @@
 <body>
 
   <form action="mailto:warrenmfg@icloud.com?subject=Project 2" method="POST">
-    
+
     <fieldset class="names">
       <label>First Name* <input type="text" name="firstName" required></label>
       <label>Last Name* <input type="text" name="lastName" required></label>
@@ -18,7 +18,7 @@
     <fieldset class="address">
       <label>Address* <input type="text" name="address" required></label>
       <label>City* <input type="text" name="city" required></label>
-      <label>State* 
+      <label>State*
         <select name="state" required>
           <option></option>
           <option>AL</option>
@@ -83,7 +83,7 @@
     </fieldset>
 
     <fieldset class="meal">
-      <label>Meal Preference* 
+      <label>Meal Preference*
         <label><input type="radio" name="meal" value="vegan" required> Vegan</label>
         <label><input type="radio" name="meal" value="vegetarian" required> Vegetarian</label>
         <label><input type="radio" name="meal" value="nonVegetarian" required> Non-Vegetarian</label>
@@ -91,7 +91,7 @@
     </fieldset>
 
     <fieldset class="contactMethod">
-      <label>Contact Method* 
+      <label>Contact Method*
         <label><input type="checkbox" name="contactMethod" value="mail"> Mail</label>
         <label><input type="checkbox" name="contactMethod" value="phone"> Phone</label>
         <label><input type="checkbox" name="contactMethod" value="email"> Email</label>
@@ -100,16 +100,16 @@
     </fieldset>
 
     <fieldset class="comments">
-      <label>Comments 
+      <label>Comments
         <textarea name="comments" maxlength="250"></textarea>
       </label>
     </fieldset>
 
     <br>
-    <button type="submit">Submit</button>
-  
+    <button type="button" id="submitBtn">Submit</button>
+
   </form>
-  
+
   <script src="app.js"></script>
 </body>
 </html>
