@@ -21,12 +21,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 40px 0;
+  margin: 140px 0 40px;
   min-height: 100vh;
   background-color: var(--peach);
 }
 
 form {
+  position: relative;
   min-width: 500px;
   max-width: 500px;
   margin: auto;
@@ -34,6 +35,13 @@ form {
   border-radius: 20px;
   background-color: var(--white);
   box-shadow: 0 0 80px -20px #3B2C20;
+}
+
+#emoji {
+  position: absolute;
+  top: -112px;
+  font-size: 100px;
+  z-index: -1;
 }
 
 fieldset {

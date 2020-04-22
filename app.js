@@ -9,7 +9,7 @@ const defaultValues = {
   areaCode: '123',
   phoneNumber: '4567890',
   email1: 'name@domain.com',
-  email2: 'name@domain.gov'
+  email2: 'name@domain.com'
 };
 
 const form = document.getElementsByTagName('form')[0];
@@ -40,7 +40,7 @@ populateFormWithDefaultValues();
 function extractInputElements(className) {
   // query the argument
   const labels = document.querySelector(className);
-  // query all inputs within argument; spread to make iterable
+  // query all inputs within argument
   return [...labels.querySelectorAll('input')];
 }
 
@@ -110,7 +110,7 @@ const validateFuncs = {
     const cityInput = address.find(el => el.name === 'city');
 
     // if value is defaultValue or invalid
-    if ( cityInput.value === defaultValues[cityInput.name] || !(/^[A-Za-z \-]+$/.test(cityInput.value)) ) {
+    if ( cityInput.value === defaultValues[cityInput.name] || !(/^[A-Za-z \.\-]+$/.test(cityInput.value)) ) {
       // indicate as false
       inputIsValid = false;
       // provide user feedback
@@ -323,14 +323,14 @@ form.addEventListener('focusin', (e) => {
 
 // event delegation: on focusout
 form.addEventListener('focusout', (e) => {
-  // if nothing was entered in input
+  // if nothing was entered in input and that element has a default value
   if (e.target.value === '' && defaultValues[e.target.name]) {
-    // replace default values
+    // replace default value
     e.target.value = defaultValues[e.target.name];
   }
 });
 
-// phone accessibility (click on 'phone' label/div to focus on area code input)
+// phone accessibility (click on 'Phone*' div/label to focus on area code input)
 phoneDiv.addEventListener('click', (e) => {
   // if click is div or label
   if (e.target.tagName === 'DIV' || e.target.tagName === 'LABEL') {
@@ -361,7 +361,9 @@ submit.addEventListener('click', () => {
   const inputsAreValid = validateForm();
   // only if valid, then submit
   if (inputsAreValid) {
+    // POST to the form's action attribute
     form.submit();
+    // reset form
     resetForm();
   }
 });
@@ -369,8 +371,12 @@ submit.addEventListener('click', () => {
 // listen for reset
 reset.addEventListener('click', resetForm);
 function resetForm() {
+  // reset form
   form.reset();
+  // add back default values
   populateFormWithDefaultValues();
+  // remove user feedback, if any
   document.querySelectorAll('p').forEach(para => provideUserFeedback(para.id));
+  // add back '250 characters remaining'
   handleCommentsTextarea();
 }
