@@ -21,16 +21,18 @@ const meal = extractInputElements('.meal');
 const contactMethod = extractInputElements('.contactMethod');
 const comments = document.getElementsByTagName('textarea')[0];
 const submit = document.querySelector('#submitBtn');
+const reset = document.querySelector('#resetBtn');
 
 
 // ONLOAD
 // populate form with default values
-(function() {
+function populateFormWithDefaultValues() {
   // spread all inputs into one array
   const inputs = [ ...names, ...address, ...contactInfo ];
   // iterate to populate appropriate value
   inputs.forEach(input => input.value = defaultValues[input.name]);
-})();
+}
+populateFormWithDefaultValues();
 
 
 // UTILITY FUNCTIONS
@@ -308,7 +310,7 @@ function validateForm() {
 }
 
 
-// EVENT HANDLERS
+// EVENT LISTENERS
 // event delegation: on focusin
 form.addEventListener('focusin', (e) => {
   // if input value is default value
@@ -327,29 +329,33 @@ form.addEventListener('focusout', (e) => {
   }
 });
 
+// track comment box input length; trigger error when above max
 comments.addEventListener('input', () => {
   const length = comments.value.length;
 
   if (length <= 250) {
     const comments = document.getElementById('comments');
+    // remove user feedback
     comments.removeAttribute('class');
     comments.innerText = `${250 - length} characters remaining`;
   } else {
+    // provide user feedback
     provideUserFeedback('comments', '250 characters or fewer please');
   }
 });
 
-
-// SUBMIT
-submit.addEventListener('click', (e) => {
+// listen for submit
+submit.addEventListener('click', () => {
+  // validate first
   const inputsAreValid = validateForm();
+  // only if valid, then submit
   if (inputsAreValid) {
     form.submit();
   }
 });
 
-
-/*
-The Reset Button will reset all of the fields on the form to a blank state.
-The Reset Button should call the reset () event handler function.
-*/
+// listen for reset
+reset.addEventListener('click', () => {
+  form.reset();
+  populateFormWithDefaultValues();
+});
