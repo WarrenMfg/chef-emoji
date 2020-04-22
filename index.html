@@ -83,9 +83,12 @@
     </fieldset>
 
     <fieldset class="contactInfo">
-      <label>Phone* <input type="text" name="areaCode" pattern="[0-9]{3}"> <input type="text" name="phoneNumber" pattern="[0-9]{7}|[0-9]{3}-[0-9]{4}"> </label>
-      <label>Email* <input type="email" name="email1" pattern="^[a-zA-Z0-9._%+-]{1,64}@[a-zA-Z0-9.-]{1,252}\.[a-zA-Z]{2,3}$"></label>
-      <label>Confirm Email* <input type="email" name="email2" pattern="^[a-zA-Z0-9._%+-]{1,64}@[a-zA-Z0-9.-]{1,252}\.[a-zA-Z]{2,3}$"></label>
+      <label>Phone* <input type="text" name="areaCode"> <input type="text" name="phoneNumber"> </label>
+      <p id="phone">&nbsp;</p>
+      <label>Email* <input type="email" name="email1"></label>
+      <p id="email1">&nbsp;</p>
+      <label>Confirm Email* <input type="email" name="email2"></label>
+      <p id="email2">&nbsp;</p>
     </fieldset>
 
     <fieldset class="meal">
@@ -94,6 +97,7 @@
         <label><input type="radio" name="meal" value="vegetarian"> Vegetarian</label>
         <label><input type="radio" name="meal" value="nonVegetarian"> Non-Vegetarian</label>
       </label>
+      <p id="meal">&nbsp;</p>
     </fieldset>
 
     <fieldset class="contactMethod">
