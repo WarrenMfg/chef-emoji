@@ -63,6 +63,7 @@ const validateFuncs = {
         // provide user feedback
         provideUserFeedback(name.name, 'Alpha characters only');
       } else {
+        // remove user feedback
         provideUserFeedback(name.name);
       }
     });
@@ -83,7 +84,28 @@ const validateFuncs = {
       // provide user feedback
       provideUserFeedback(addressInput.name, 'Alphanumeric characters only');
     } else {
+      // remove user feedback
       provideUserFeedback(addressInput.name);
+    }
+
+    // if valid, return true; else, return undefined
+    if (inputsAreValid) return true;
+  },
+
+
+  validateCity: () => {
+    let inputsAreValid = true;
+    const cityInput = address.find(el => el.name === 'city');
+
+    // if value is defaultValue or invalid
+    if ( cityInput.value === defaultValues[cityInput.name] || !(/^[A-Za-z\-]+$/.test(cityInput.value)) ) {
+      // indicate as false
+      inputsAreValid = false;
+      // provide user feedback
+      provideUserFeedback(cityInput.name, 'Alpha characters only');
+    } else {
+      // remove user feedback
+      provideUserFeedback(cityInput.name);
     }
 
     // if valid, return true; else, return undefined
