@@ -1,3 +1,29 @@
+// GLOBALS
+// default form values
+const defaultValues = {
+  firstName: 'Captain',
+  lastName: 'Obvious',
+  address: '123 Address St.',
+  city: 'City',
+  zip: '000000'
+};
+
+const names = extractInputElements('.names');
+const address = extractInputElements('.address');
+const form = document.getElementsByTagName('form')[0];
+const submit = document.querySelector('#submitBtn');
+
+
+// ONLOAD
+// populate form with default values
+(function() {
+  // spread all inputs into one array
+  const inputs = [ ...names, ...address ];
+  // iterate to populate appropriate value
+  inputs.forEach(input => input.value = defaultValues[input.name]);
+})();
+
+
 // UTILITY FUNCTIONS
 function extractInputElements(className) {
   // query the argument
@@ -7,24 +33,79 @@ function extractInputElements(className) {
 }
 
 
-// GLOBALS
-// default form values
-const defaultValues = {
-  firstName: 'Captain',
-  lastName: 'Obvious',
+function provideUserFeedback(id, userFeedback) {
+  const element = document.getElementById(id);
+  // if feedback is needed
+  if (userFeedback) {
+    // give user feedback
+    element.innerText = userFeedback;
+    // add color coordination
+    element.className = 'invalid';
+  } else {
+    // otherwise, replace user feedback with &nbsp;
+    element.innerText = '\u00a0';
+    // and remove color coordination
+    element.className = '';
+  }
+}
 
+
+const validateFuncs = {
+  validateNames: () => {
+    let inputsAreValid = true;
+
+    // iterate over name inputs
+    names.forEach(name => {
+      // if value is defaultValue or invalid
+      if ( name.value === defaultValues[name.name] || !(/^[A-Za-z\-]+$/.test(name.value)) ) {
+        // indicate as false
+        inputsAreValid = false;
+        // provide user feedback
+        provideUserFeedback(name.name, 'Alpha characters only');
+      } else {
+        provideUserFeedback(name.name);
+      }
+    });
+
+    // if valid, return true; else, return undefined
+    if (inputsAreValid) return true;
+  },
+
+
+  validateAddress: () => {
+    let inputsAreValid = true;
+    const addressInput = address.find(el => el.name === 'address');
+
+    // if value is defaultValue or invalid
+    if ( addressInput.value === defaultValues[addressInput.name] || !(/^[0-9A-Za-z \.\-]+$/.test(addressInput.value)) ) {
+      // indicate as false
+      inputsAreValid = false;
+      // provide user feedback
+      provideUserFeedback(addressInput.name, 'Alphanumeric characters only');
+    } else {
+      provideUserFeedback(addressInput.name);
+    }
+
+    // if valid, return true; else, return undefined
+    if (inputsAreValid) return true;
+  }
 };
 
-const names = extractInputElements('.names');
-const form = document.getElementsByTagName('form')[0];
-const submit = document.querySelector('#submitBtn');
 
+function validateForm() {
+  let inputsAreValid = true;
 
-// ONLOAD
-// populate form with default values
-(function() {
-  names.forEach(name => name.value = defaultValues[name.name]);
-})();
+  // iterate over all validation functions
+  for (let [key, func] of Object.entries(validateFuncs)) {
+    // invoke each function and if false is returned toggle inputsAreValid to false
+    func() ? null : inputsAreValid = false;
+  }
+
+  // only if still true, then return true, else return undefined
+  if (inputsAreValid) {
+    return true;
+  }
+}
 
 
 // EVENT HANDLERS

@@ -11,15 +11,19 @@
   <form action="mailto:warrenmfg@icloud.com?subject=Project 2" method="POST">
 
     <fieldset class="names">
-      <label>First Name* <input type="text" name="firstName" required></label>
-      <label>Last Name* <input type="text" name="lastName" required></label>
+      <label>First Name* <input type="text" name="firstName"></label>
+      <p id="firstName">&nbsp;</p>
+      <label>Last Name* <input type="text" name="lastName"></label>
+      <p id="lastName">&nbsp;</p>
     </fieldset>
 
     <fieldset class="address">
-      <label>Address* <input type="text" name="address" required></label>
-      <label>City* <input type="text" name="city" required></label>
+      <label>Address* <input type="text" name="address"></label>
+      <p id="address">&nbsp;</p>
+      <label>City* <input type="text" name="city"></label>
+      <p id="city">&nbsp;</p>
       <label>State*
-        <select name="state" required>
+        <select name="state">
           <option></option>
           <option>AL</option>
           <option>AK</option>
@@ -73,20 +77,21 @@
           <option>WY</option>
         </select>
       </label>
-      <label>Zip* <input type="text" name="zip" pattern="[0-9]{5}" required></label>
+      <label>Zip* <input type="text" name="zip" pattern="[0-9]{5}"></label>
+      <p id="zip">&nbsp;</p>
     </fieldset>
 
     <fieldset class="contactInfo">
-      <label>Phone* <input type="text" name="areaCode" pattern="[0-9]{3}" required> <input type="text" name="phoneNumber" pattern="[0-9]{7}|[0-9]{3}-[0-9]{4}" required> </label>
-      <label>Email* <input type="email" name="email1" pattern="^[a-zA-Z0-9._%+-]{1,64}@[a-zA-Z0-9.-]{1,252}\.[a-zA-Z]{2,3}$" required></label>
-      <label>Confirm Email* <input type="email" name="email2" pattern="^[a-zA-Z0-9._%+-]{1,64}@[a-zA-Z0-9.-]{1,252}\.[a-zA-Z]{2,3}$" required></label>
+      <label>Phone* <input type="text" name="areaCode" pattern="[0-9]{3}"> <input type="text" name="phoneNumber" pattern="[0-9]{7}|[0-9]{3}-[0-9]{4}"> </label>
+      <label>Email* <input type="email" name="email1" pattern="^[a-zA-Z0-9._%+-]{1,64}@[a-zA-Z0-9.-]{1,252}\.[a-zA-Z]{2,3}$"></label>
+      <label>Confirm Email* <input type="email" name="email2" pattern="^[a-zA-Z0-9._%+-]{1,64}@[a-zA-Z0-9.-]{1,252}\.[a-zA-Z]{2,3}$"></label>
     </fieldset>
 
     <fieldset class="meal">
       <label>Meal Preference*
-        <label><input type="radio" name="meal" value="vegan" required> Vegan</label>
-        <label><input type="radio" name="meal" value="vegetarian" required> Vegetarian</label>
-        <label><input type="radio" name="meal" value="nonVegetarian" required> Non-Vegetarian</label>
+        <label><input type="radio" name="meal" value="vegan"> Vegan</label>
+        <label><input type="radio" name="meal" value="vegetarian"> Vegetarian</label>
+        <label><input type="radio" name="meal" value="nonVegetarian"> Non-Vegetarian</label>
       </label>
     </fieldset>
 

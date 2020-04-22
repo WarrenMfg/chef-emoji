@@ -6,6 +6,14 @@ label {
   display: block;
 }
 
+p {
+  margin: 0 0 5px;
+}
+
+.invalid {
+  background-color: pink;
+}
+
 input[name="zip"]::-webkit-outer-spin-button,
 input[name="zip"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
