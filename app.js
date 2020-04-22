@@ -5,13 +5,13 @@ const defaultValues = {
   lastName: 'Obvious',
   address: '123 Address St.',
   city: 'City',
-  zip: '000000'
+  zip: '01234'
 };
 
+const form = document.getElementsByTagName('form')[0];
 const names = extractInputElements('.names');
 const address = extractInputElements('.address');
 const state = document.getElementsByTagName('select')[0];
-const form = document.getElementsByTagName('form')[0];
 const submit = document.querySelector('#submitBtn');
 
 
@@ -129,8 +129,26 @@ const validateFuncs = {
 
 
   validateZip: () => {
+    let inputsAreValid = true;
+    const zipInput = address.find(el => el.name === 'zip');
 
-  }
+    // if value is defaultValue or invalid
+    if ( zipInput.value === defaultValues[zipInput.name] || !(/^[0-9]{5}$/.test(zipInput.value)) ) {
+      // indicate as false
+      inputsAreValid = false;
+      // provide user feedback
+      provideUserFeedback(zipInput.name, 'Five numeric characters only');
+    } else {
+      // remove user feedback
+      provideUserFeedback(zipInput.name);
+    }
+
+    // if valid, return true; else, return undefined
+    if (inputsAreValid) return true;
+  },
+
+
+
 };
 
 
