@@ -10,6 +10,7 @@ const defaultValues = {
 
 const names = extractInputElements('.names');
 const address = extractInputElements('.address');
+const state = document.getElementsByTagName('select')[0];
 const form = document.getElementsByTagName('form')[0];
 const submit = document.querySelector('#submitBtn');
 
@@ -98,7 +99,7 @@ const validateFuncs = {
     const cityInput = address.find(el => el.name === 'city');
 
     // if value is defaultValue or invalid
-    if ( cityInput.value === defaultValues[cityInput.name] || !(/^[A-Za-z\-]+$/.test(cityInput.value)) ) {
+    if ( cityInput.value === defaultValues[cityInput.name] || !(/^[A-Za-z \-]+$/.test(cityInput.value)) ) {
       // indicate as false
       inputsAreValid = false;
       // provide user feedback
@@ -110,6 +111,25 @@ const validateFuncs = {
 
     // if valid, return true; else, return undefined
     if (inputsAreValid) return true;
+  },
+
+
+  validateState: () => {
+    let inputsAreValid = true;
+
+    if (state.value === '') {
+      inputsAreValid = false;
+      provideUserFeedback(state.name, 'Selection required');
+    } else {
+      provideUserFeedback(state.name);
+    }
+
+    if (inputsAreValid) return true;
+  },
+
+
+  validateZip: () => {
+
   }
 };
 
