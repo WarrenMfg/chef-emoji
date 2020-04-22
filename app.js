@@ -73,7 +73,7 @@ const validateFuncs = {
         // indicate as false
         inputsAreValid = false;
         // provide user feedback
-        provideUserFeedback(name.name, 'Alpha characters only');
+        provideUserFeedback(name.name, '🤪 Alpha characters only');
       } else {
         // remove user feedback
         provideUserFeedback(name.name);
@@ -94,7 +94,7 @@ const validateFuncs = {
       // indicate as false
       inputIsValid = false;
       // provide user feedback
-      provideUserFeedback(addressInput.name, 'Alphanumeric characters only');
+      provideUserFeedback(addressInput.name, '🤪 Alphanumeric characters only');
     } else {
       // remove user feedback
       provideUserFeedback(addressInput.name);
@@ -114,7 +114,7 @@ const validateFuncs = {
       // indicate as false
       inputIsValid = false;
       // provide user feedback
-      provideUserFeedback(cityInput.name, 'Alpha characters only');
+      provideUserFeedback(cityInput.name, '🤪 Alpha characters only');
     } else {
       // remove user feedback
       provideUserFeedback(cityInput.name);
@@ -133,7 +133,7 @@ const validateFuncs = {
       // indicate as such
       inputIsValid = false;
       // provide user feedback
-      provideUserFeedback(state.name, 'Selection required');
+      provideUserFeedback(state.name, '🤪 Selection required');
     } else {
       // otherwise, remove user feedback
       provideUserFeedback(state.name);
@@ -153,7 +153,7 @@ const validateFuncs = {
       // indicate as false
       inputIsValid = false;
       // provide user feedback
-      provideUserFeedback(zipInput.name, 'Five numeric characters only');
+      provideUserFeedback(zipInput.name, '🤪 Five numeric characters only');
     } else {
       // remove user feedback
       provideUserFeedback(zipInput.name);
@@ -176,7 +176,7 @@ const validateFuncs = {
           // indicate as false
           areaCodeIsValid = false;
           // provide user feedback
-          provideUserFeedback('phone', 'Numeric characters only: 123 4567890');
+          provideUserFeedback('phone', '🤪 Numeric characters only: 123 4567890');
         }
 
       } else if (input.name === 'phoneNumber') {
@@ -185,7 +185,7 @@ const validateFuncs = {
           // indicate as false
           phoneNumberIsValid = false;
           // provide user feedback
-          provideUserFeedback('phone', 'Numeric characters only: 123 4567890');
+          provideUserFeedback('phone', '🤪 Numeric characters only: 123 4567890');
         }
       }
     });
@@ -207,7 +207,7 @@ const validateFuncs = {
       // indicate as false
       inputIsValid = false;
       // provide user feedback
-      provideUserFeedback(email1.name, 'Invalid email address');
+      provideUserFeedback(email1.name, '🤪 Invalid email address');
     } else {
       // remove user feedback
       provideUserFeedback(email1.name);
@@ -228,7 +228,7 @@ const validateFuncs = {
       // indicate as false
       emailsAreEqual = false;
       // provide user feedback
-      provideUserFeedback(email2.name, 'Emails do not match');
+      provideUserFeedback(email2.name, '🤪 Emails do not match');
     } else {
       // remove user feedback
       provideUserFeedback(email2.name);
@@ -258,7 +258,7 @@ const validateFuncs = {
       return true;
     } else {
       // else provide user feedback
-      provideUserFeedback('meal', 'Please choose a meal preference');
+      provideUserFeedback('meal', '🤪 Please choose a meal preference');
     }
   },
 
@@ -282,7 +282,7 @@ const validateFuncs = {
       return true;
     } else {
       // otherwise, provide user feedback
-      provideUserFeedback('contactMethod', 'Please choose at least two contact methods');
+      provideUserFeedback('contactMethod', '🤪 Please choose at least two contact methods');
     }
   },
 
@@ -351,7 +351,7 @@ function handleCommentsTextarea() {
     comments.innerText = `${250 - length} characters remaining`;
   } else {
     // provide user feedback
-    provideUserFeedback('comments', '250 characters or fewer please');
+    provideUserFeedback('comments', '🤪 250 characters or fewer please');
   }
 }
 
