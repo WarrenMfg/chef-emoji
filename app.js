@@ -18,6 +18,8 @@ const address = extractInputElements('.address');
 const state = document.getElementsByTagName('select')[0];
 const contactInfo = extractInputElements('.contactInfo');
 const meal = extractInputElements('.meal');
+const contactMethod = extractInputElements('.contactMethod');
+const comments = document.getElementsByTagName('textarea')[0];
 const submit = document.querySelector('#submitBtn');
 
 
@@ -123,13 +125,18 @@ const validateFuncs = {
   validateState: () => {
     let inputIsValid = true;
 
+    // if no selection is made
     if (state.value === '') {
+      // indicate as such
       inputIsValid = false;
+      // provide user feedback
       provideUserFeedback(state.name, 'Selection required');
     } else {
+      // otherwise, remove user feedback
       provideUserFeedback(state.name);
     }
 
+    // if valid, return true; else, return undefined
     if (inputIsValid) return true;
   },
 
@@ -181,6 +188,7 @@ const validateFuncs = {
     });
 
     if (areaCodeIsValid && phoneNumberIsValid) {
+      // remove user feedback
       provideUserFeedback('phone');
       return true
     };
@@ -219,9 +227,11 @@ const validateFuncs = {
       // provide user feedback
       provideUserFeedback(email2.name, 'Emails do not match');
     } else {
+      // remove user feedback
       provideUserFeedback(email2.name);
     }
 
+    // if equal, return true; else, return undefined
     if (emailsAreEqual) return true;
   },
 
@@ -229,17 +239,54 @@ const validateFuncs = {
   validateMealPreference: () => {
     let mealPreferenceMade = false;
 
+    // iterate over meal radio buttons
     meal.forEach(input => {
+      // if one is checked
       if (input.checked) {
+        // indicate as true
         mealPreferenceMade = true;
+        // remove user feedback
         provideUserFeedback('meal');
       }
     });
 
+    // if preference selected, return true
     if (mealPreferenceMade) {
       return true;
     } else {
+      // else provide user feedback
       provideUserFeedback('meal', 'Please choose a meal preference');
+    }
+  },
+
+
+  validateContactMethod: () => {
+    let contactMethodsChecked = 0;
+
+    // iterate over contact method checkboxes
+    contactMethod.forEach(input => {
+      // if one is checked
+      if (input.checked) {
+        // count it
+        contactMethodsChecked++;
+      }
+    });
+
+    // if count is adequate
+    if (contactMethodsChecked >= 2) {
+      // remove user feedback
+      provideUserFeedback('contactMethod');
+      return true;
+    } else {
+      // otherwise, provide user feedback
+      provideUserFeedback('contactMethod', 'Please choose at least two contact methods');
+    }
+  },
+
+
+  validateComments: () => {
+    if (comments.value.length <= 250) {
+      return true;
     }
   }
 };
@@ -271,7 +318,6 @@ form.addEventListener('focusin', (e) => {
   }
 });
 
-
 // event delegation: on focusout
 form.addEventListener('focusout', (e) => {
   // if nothing was entered in input
@@ -281,25 +327,19 @@ form.addEventListener('focusout', (e) => {
   }
 });
 
+comments.addEventListener('input', () => {
+  const length = comments.value.length;
 
-// event delegation for .names (firstName, lastName): on change
+  if (length <= 250) {
+    const comments = document.getElementById('comments');
+    comments.removeAttribute('class');
+    comments.innerText = `${250 - length} characters remaining`;
+  } else {
+    provideUserFeedback('comments', '250 characters or fewer please');
+  }
+});
 
 
-// compare email addresses
-
-
-// confirm at least two checkboxes are selected
-
-
-/*
-The Submit Button, when clicked, will display all of the errors on the form.
-If errors exist on the form, the form data will not be e-mailed.
-Once all errors have been removed AND all of the default text has been replaced,
-data entered into the form will be transmitted via e-mail.
-The Submit Button should call the submit () event handler function.
-
-e-mail the result to your personal e-mail address.
-*/
 // SUBMIT
 submit.addEventListener('click', (e) => {
   const inputsAreValid = validateForm();
@@ -307,6 +347,7 @@ submit.addEventListener('click', (e) => {
     form.submit();
   }
 });
+
 
 /*
 The Reset Button will reset all of the fields on the form to a blank state.
