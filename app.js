@@ -226,7 +226,22 @@ const validateFuncs = {
   },
 
 
+  validateMealPreference: () => {
+    let mealPreferenceMade = false;
 
+    meal.forEach(input => {
+      if (input.checked) {
+        mealPreferenceMade = true;
+        provideUserFeedback('meal');
+      }
+    });
+
+    if (mealPreferenceMade) {
+      return true;
+    } else {
+      provideUserFeedback('meal', 'Please choose a meal preference');
+    }
+  }
 };
 
 
