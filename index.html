@@ -8,23 +8,23 @@
 </head>
 <body>
 
-  <form action="mailto:warrenmfg@icloud.com?subject=Project 2" method="POST" enctype="text/plain">
+  <form action="mailto:warrenmfg@icloud.com?subject=Project2" method="POST" enctype="text/plain">
 
     <fieldset class="names">
-      <label>First Name* <input type="text" name="firstName"></label>
+      <label>First Name*<input type="text" name="firstName"></label>
       <p id="firstName">&nbsp;</p>
-      <label>Last Name* <input type="text" name="lastName"></label>
+      <label>Last Name*<input type="text" name="lastName"></label>
       <p id="lastName">&nbsp;</p>
     </fieldset>
 
     <fieldset class="address">
-      <label>Address* <input type="text" name="address"></label>
+      <label>Address*<input type="text" name="address"></label>
       <p id="address">&nbsp;</p>
-      <label>City* <input type="text" name="city"></label>
+      <label>City*<input type="text" name="city"></label>
       <p id="city">&nbsp;</p>
       <label>State*
         <select name="state">
-          <option></option>
+          <option label=" "></option>
           <option>AL</option>
           <option>AK</option>
           <option>AZ</option>
@@ -76,37 +76,43 @@
           <option>WI</option>
           <option>WY</option>
         </select>
-        <p id="state">&nbsp;</p>
       </label>
-      <label>Zip* <input type="text" name="zip"></label>
+      <p id="state">&nbsp;</p>
+      <label>Zip*<input type="text" name="zip"></label>
       <p id="zip">&nbsp;</p>
     </fieldset>
 
     <fieldset class="contactInfo">
-      <label>Phone* <input type="text" name="areaCode"> <input type="text" name="phoneNumber"> </label>
+      <div><label>Phone*</label><span><input type="text" name="areaCode"> <input type="text" name="phoneNumber"></span></div>
       <p id="phone">&nbsp;</p>
-      <label>Email* <input type="email" name="email1"></label>
+      <label>Email*<input type="email" name="email1"></label>
       <p id="email1">&nbsp;</p>
-      <label>Confirm Email* <input type="email" name="email2"></label>
+      <label>Confirm Email*<input type="email" name="email2"></label>
       <p id="email2">&nbsp;</p>
     </fieldset>
 
     <fieldset class="meal">
-      <label>Meal Preference*
-        <label><input type="radio" name="meal" value="vegan"> Vegan</label>
-        <label><input type="radio" name="meal" value="vegetarian"> Vegetarian</label>
-        <label><input type="radio" name="meal" value="nonVegetarian"> Non-Vegetarian</label>
-      </label>
+      <span>Meal Preference*</span>
+      <div>
+        <label>Vegan<input type="radio" name="meal" value="vegan"></label>
+        <label>Vegetarian<input type="radio" name="meal" value="vegetarian"></label>
+        <label>Non-Vegetarian<input type="radio" name="meal" value="nonVegetarian"></label>
+      </div>
       <p id="meal">&nbsp;</p>
     </fieldset>
 
     <fieldset class="contactMethod">
-      <label>Contact Method*
-        <label><input type="checkbox" name="contactMethod" value="mail"> Mail</label>
-        <label><input type="checkbox" name="contactMethod" value="phone"> Phone</label>
-        <label><input type="checkbox" name="contactMethod" value="email"> Email</label>
-        <label><input type="checkbox" name="contactMethod" value="pigeon"> Pigeon</label>
-      </label>
+      <span>Contact Method*</span>
+      <div id="checkboxContainer">
+        <div id="mailAndPhone">
+          <label>Mail<input type="checkbox" name="contactMethod" value="mail"></label>
+          <label>Phone<input type="checkbox" name="contactMethod" value="phone"></label>
+        </div>
+        <div id="emailAndPigeon">
+          <label>Email<input type="checkbox" name="contactMethod" value="email"></label>
+          <label>Pigeon<input type="checkbox" name="contactMethod" value="pigeon"></label>
+        </div>
+      </div>
       <p id="contactMethod">&nbsp;</p>
     </fieldset>
 
@@ -117,9 +123,10 @@
       <p id="comments">250 characters remaining</p>
     </fieldset>
 
-    <br>
-    <button type="button" id="submitBtn">Submit</button>
-    <button type="button" id="resetBtn">Reset</button>
+    <div id="buttons">
+      <button type="button" id="submitBtn">Submit</button>
+      <button type="button" id="resetBtn">Reset</button>
+    </div>
 
   </form>
 

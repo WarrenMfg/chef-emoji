@@ -1,28 +1,223 @@
+/* GLOBAL */
+:root {
+  --peach: #F9BA89;
+  --blue: #032E4C;
+  --yellow:#E3C04F;
+  --orange: #F1713D;
+  --white: #F4F4F4;
+}
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--blue);
+  box-sizing: border-box;
+}
+
+*:focus {
+  outline: none;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0;
+  min-height: 100vh;
+  background-color: var(--peach);
+}
+
+form {
+  min-width: 500px;
+  max-width: 500px;
+  margin: auto;
+  padding: 40px;
+  border-radius: 20px;
+  background-color: var(--white);
+  box-shadow: 0 0 80px -20px #3B2C20;
+}
+
 fieldset {
   border: none;
   margin: 0;
   padding: 0;
 }
 
-label {
+label, .meal span, .contactMethod span {
   display: block;
+  font-size: 20px;
+}
+
+input, select, textarea {
+  font-size: 20px;
+  padding: 5px;
+  width: 60%;
+  border-radius: 10px;
+  border-bottom: 1px solid var(--blue);
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  transition: border 0.2s ease;
+}
+
+input:focus, input:hover, select:focus, select:hover, textarea:focus, textarea:hover {
+  border-bottom: 1px solid var(--orange);
+  border-left: none;
+  border-right: none;
+  border-top: none;
 }
 
 p {
-  margin: 0 0 5px;
+  margin: 0 0 10px;
+  padding: 5px 10px;
+  border-radius: 10px;
 }
 
 .invalid {
-  background-color: pink;
+  background-color: var(--yellow);
 }
 
-input[name="zip"]::-webkit-outer-spin-button,
-input[name="zip"]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
+/* NAMES */
+.names label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ADDRESS */
+.address label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+select {
+  width: 60%;
+  height: 37px;
+  cursor: pointer;
+}
+
+/* CONTACTINFO */
+.contactInfo div, .contactInfo label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contactInfo span {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.contactInfo input[name="areaCode"] {
+  width: 20%;
+}
+
+.contactInfo input[name="phoneNumber"] {
+  width: 78%;
+}
+
+/* MEAL */
+.meal div{
+  width: 50%;
+  margin: auto;
+}
+.meal label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.meal input {
+  width: initial;
   margin: 0;
+  transition: outline 0.2s ease;
+  cursor: pointer;
 }
 
-/* Firefox */
-input[name="zip"] {
-  -moz-appearance: textfield;
+.meal input:focus {
+  outline: 1px outset var(--orange);
+}
+
+/* CONTACTMETHOD */
+#checkboxContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "mailAndPhone emailAndPigeon";
+}
+
+#mailAndPhone {
+  grid-area: mailAndPhone;
+  padding: 0 20px 0 100px;
+}
+
+#emailAndPigeon {
+  grid-area: emailAndPigeon;
+  padding: 0 100px 0 20px;
+}
+
+.contactMethod label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contactMethod input {
+  width: initial;
+  transition: outline 0.2s ease;
+  cursor: pointer;
+}
+
+.contactMethod input:focus {
+  outline: 1px outset var(--orange);
+}
+
+/* COMMENTS */
+.comments label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+textarea {
+  resize: none;
+  width: 252px;
+  /* border: 1px solid rgb(238,238,238); */
+}
+
+#comments {
+  text-align: center;
+}
+
+
+/* BUTTONS */
+#buttons {
+  display: flex;
+  justify-content: center;
+
+}
+
+button {
+  font-size: 20px;
+  border-radius: 10px;
+  border: 1px solid var(--blue);
+  background-color: var(--white);
+  margin: 15px 0 0;
+  padding: 10px;
+  width: 100px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+button:hover {
+  color: var(--white);
+  background-color: var(--blue);
+}
+
+#submitBtn {
+  margin-right: 20px;
+}
+
+#resetBtn {
+
 }

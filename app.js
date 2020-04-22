@@ -17,6 +17,7 @@ const names = extractInputElements('.names');
 const address = extractInputElements('.address');
 const state = document.getElementsByTagName('select')[0];
 const contactInfo = extractInputElements('.contactInfo');
+const phoneDiv = document.querySelector('.contactInfo div');
 const meal = extractInputElements('.meal');
 const contactMethod = extractInputElements('.contactMethod');
 const comments = document.getElementsByTagName('textarea')[0];
@@ -329,8 +330,18 @@ form.addEventListener('focusout', (e) => {
   }
 });
 
+// phone accessibility (click on 'phone' label/div to focus on area code input)
+phoneDiv.addEventListener('click', (e) => {
+  // if click is div or label
+  if (e.target.tagName === 'DIV' || e.target.tagName === 'LABEL') {
+    // focus on area code input
+    phoneDiv.querySelector('input[name="areaCode"]').focus();
+  }
+});
+
 // track comment box input length; trigger error when above max
-comments.addEventListener('input', () => {
+comments.addEventListener('input', handleCommentsTextarea);
+function handleCommentsTextarea() {
   const length = comments.value.length;
 
   if (length <= 250) {
@@ -342,7 +353,7 @@ comments.addEventListener('input', () => {
     // provide user feedback
     provideUserFeedback('comments', '250 characters or fewer please');
   }
-});
+}
 
 // listen for submit
 submit.addEventListener('click', () => {
@@ -351,11 +362,15 @@ submit.addEventListener('click', () => {
   // only if valid, then submit
   if (inputsAreValid) {
     form.submit();
+    resetForm();
   }
 });
 
 // listen for reset
-reset.addEventListener('click', () => {
+reset.addEventListener('click', resetForm);
+function resetForm() {
   form.reset();
   populateFormWithDefaultValues();
-});
+  document.querySelectorAll('p').forEach(para => provideUserFeedback(para.id));
+  handleCommentsTextarea();
+}
