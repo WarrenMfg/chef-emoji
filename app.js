@@ -68,7 +68,7 @@ const validateFuncs = {
 
     // iterate over name inputs
     names.forEach(name => {
-      // if value is defaultValue or invalid
+      // if value is defaultValue or invalid (hyphen for hyphenated names)
       if ( name.value === defaultValues[name.name] || !(/^[A-Za-z\-]+$/.test(name.value)) ) {
         // indicate as false
         inputsAreValid = false;
@@ -89,7 +89,7 @@ const validateFuncs = {
     let inputIsValid = true;
     const addressInput = address.find(el => el.name === 'address');
 
-    // if value is defaultValue or invalid
+    // if value is defaultValue or invalid (period for abbreviations like 'Blvd.' and hyphen for hyphenated street names)
     if ( addressInput.value === defaultValues[addressInput.name] || !(/^[0-9A-Za-z \.\-]+$/.test(addressInput.value)) ) {
       // indicate as false
       inputIsValid = false;
@@ -109,7 +109,7 @@ const validateFuncs = {
     let inputIsValid = true;
     const cityInput = address.find(el => el.name === 'city');
 
-    // if value is defaultValue or invalid
+    // if value is defaultValue or invalid (period for abbreviations like 'St.' for Saint, and hyphen for names like 'Winston-Salem')
     if ( cityInput.value === defaultValues[cityInput.name] || !(/^[A-Za-z \.\-]+$/.test(cityInput.value)) ) {
       // indicate as false
       inputIsValid = false;
@@ -311,6 +311,22 @@ function validateForm() {
 }
 
 
+// SUBMIT HANDLER--triggers form validation
+function handleSubmit(e) {
+  // prevent form submission
+  e.preventDefault();
+  // validate first
+  const inputsAreValid = validateForm();
+  // only if valid, then submit
+  if (inputsAreValid) {
+    // POST to the form's action attribute
+    form.submit();
+    // reset form
+    resetForm();
+  }
+}
+
+
 // EVENT LISTENERS
 // event delegation: on focusin
 form.addEventListener('focusin', (e) => {
@@ -354,19 +370,6 @@ function handleCommentsTextarea() {
     provideUserFeedback('comments', '🤪 250 characters or fewer please');
   }
 }
-
-// listen for submit
-submit.addEventListener('click', () => {
-  // validate first
-  const inputsAreValid = validateForm();
-  // only if valid, then submit
-  if (inputsAreValid) {
-    // POST to the form's action attribute
-    form.submit();
-    // reset form
-    resetForm();
-  }
-});
 
 // listen for reset
 reset.addEventListener('click', resetForm);

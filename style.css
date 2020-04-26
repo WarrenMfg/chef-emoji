@@ -47,7 +47,6 @@ form {
   position: absolute;
   top: -112px;
   font-size: 100px;
-  z-index: -1;
 }
 
 fieldset {

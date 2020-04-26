@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="site.webmanifest">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <title>Form Validation</title>
+  <title>Chef Emoji</title>
 </head>
 <body>
 
 
-  <form action="mailto:warrenmfg@icloud.com?subject=Project2" method="POST" enctype="text/plain">
+  <form action="mailto:warrenmfg@icloud.com?subject=Project2" method="POST" enctype="text/plain" onsubmit="handleSubmit(event)">
 
     <div id="emoji">👨🏻‍🍳</div>
 
@@ -127,7 +131,7 @@
     </fieldset>
 
     <div id="buttons">
-      <button type="button" id="submitBtn">Submit</button>
+      <button type="submit" id="submitBtn">Submit</button>
       <button type="button" id="resetBtn">Reset</button>
     </div>
 
