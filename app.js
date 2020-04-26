@@ -1,8 +1,8 @@
 // GLOBALS
 // default form values
 const defaultValues = {
-  firstName: 'Captain',
-  lastName: 'Obvious',
+  firstName: 'Chef',
+  lastName: 'Emoji',
   address: '123 Address St.',
   city: 'City',
   zip: '01234',
